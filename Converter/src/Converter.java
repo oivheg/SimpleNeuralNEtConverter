@@ -28,7 +28,7 @@ pokerHandString="";
 issuit = true;
 				String[] split = line.next().split(",");
 
-				for (int i = 0; i < split.length - 2; i++) {
+				for (int i = 0; i < split.length - 1; i++) {
 
 					if (issuit) {
 
