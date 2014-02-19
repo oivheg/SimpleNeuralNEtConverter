@@ -11,17 +11,20 @@ public class Converter {
 	}
 
 	boolean issuit = true;
-	String finished = "";
-	PrintWriter writer;
+	String cardsString = "";
+	String pokerHandString = "";
+	PrintWriter writerCards, writerHand;
 	Scanner line;
 	public void readline() {
 		
 		try {
-			writer = new PrintWriter("test_converted.txt", "UTF-8");
+			writerCards = new PrintWriter("Cards.txt", "UTF-8");
+			writerHand = new PrintWriter("hands.txt", "UTF-8");
 			 line = new Scanner(new BufferedReader(new FileReader(
 					"pokertest.data.txt")));
 			while (line.hasNext()) {
-finished = "";
+cardsString = "";
+pokerHandString="";
 issuit = true;
 				String[] split = line.next().split(",");
 
@@ -33,16 +36,16 @@ issuit = true;
 						// System.out.print("dette er suit  ");
 						switch (split[i]) {
 						case "1":
-							finished += "1,0,0,0,";
+							cardsString += "1,0,0,0,";
 							break;
 						case "2":
-							finished += "0,1,0,0,";
+							cardsString += "0,1,0,0,";
 							break;
 						case "3":
-							finished += "0,0,1,0,";
+							cardsString += "0,0,1,0,";
 							break;
 						case "4":
-							finished += "0,0,0,1,";
+							cardsString += "0,0,0,1,";
 							break;
 
 						}
@@ -51,43 +54,43 @@ issuit = true;
 						// System.out.print("dette er number  ");
 						switch (split[i]) {
 						case "1":
-							finished += "1,0,0,0,0,0,0,0,0,0,0,0,0,";
+							cardsString += "1,0,0,0,0,0,0,0,0,0,0,0,0,";
 							break;
 						case "2":
-							finished += "0,1,0,0,0,0,0,0,0,0,0,0,0,";
+							cardsString += "0,1,0,0,0,0,0,0,0,0,0,0,0,";
 							break;
 						case "3":
-							finished += "0,0,1,0,0,0,0,0,0,0,0,0,0,";
+							cardsString += "0,0,1,0,0,0,0,0,0,0,0,0,0,";
 							break;
 						case "4":
-							finished += "0,0,0,1,0,0,0,0,0,0,0,0,0,";
+							cardsString += "0,0,0,1,0,0,0,0,0,0,0,0,0,";
 							break;
 						case "5":
-							finished += "0,0,0,0,1,0,0,0,0,0,0,0,0,";
+							cardsString += "0,0,0,0,1,0,0,0,0,0,0,0,0,";
 							break;
 						case "6":
-							finished += "0,0,0,0,0,1,0,0,0,0,0,0,0,";
+							cardsString += "0,0,0,0,0,1,0,0,0,0,0,0,0,";
 							break;
 						case "7":
-							finished += "0,0,0,0,0,0,1,0,0,0,0,0,0,";
+							cardsString += "0,0,0,0,0,0,1,0,0,0,0,0,0,";
 							break;
 						case "8":
-							finished += "0,0,0,0,0,0,0,1,0,0,0,0,0,";
+							cardsString += "0,0,0,0,0,0,0,1,0,0,0,0,0,";
 							break;
 						case "9":
-							finished += "0,0,0,0,0,0,0,0,1,0,0,0,0,";
+							cardsString += "0,0,0,0,0,0,0,0,1,0,0,0,0,";
 							break;
 						case "10":
-							finished += "0,0,0,0,0,0,0,0,0,1,0,0,0,";
+							cardsString += "0,0,0,0,0,0,0,0,0,1,0,0,0,";
 							break;
 						case "11":
-							finished += "0,0,0,0,0,0,0,0,0,0,1,0,0,";
+							cardsString += "0,0,0,0,0,0,0,0,0,0,1,0,0,";
 							break;
 						case "12":
-							finished += "0,0,0,0,0,0,0,0,0,0,0,1,0,";
+							cardsString += "0,0,0,0,0,0,0,0,0,0,0,1,0,";
 							break;
 						case "13":
-							finished += "0,0,0,0,0,0,0,0,0,0,0,0,1,";
+							cardsString += "0,0,0,0,0,0,0,0,0,0,0,0,1,";
 							break;
 
 						}
@@ -95,38 +98,41 @@ issuit = true;
 						issuit = true;
 					}
 				}
+				
+				
+				cardsString = cardsString.substring(0, cardsString.length()-1);
 				switch (split[10]) {
 				case "0":
-					finished += "1,0,0,0,0,0,0,0,0,0";
+					pokerHandString += "1,0,0,0,0,0,0,0,0,0";
 					break;
 
 				case "1":
-					finished += "0,1,0,0,0,0,0,0,0,0";
+					pokerHandString += "0,1,0,0,0,0,0,0,0,0";
 					break;
 				case "2":
-					finished += "0,0,1,0,0,0,0,0,0,0";
+					pokerHandString += "0,0,1,0,0,0,0,0,0,0";
 					break;
 				case "3":
-					finished += "0,0,0,1,0,0,0,0,0,0";
+					pokerHandString += "0,0,0,1,0,0,0,0,0,0";
 					break;
 
 				case "4":
-					finished += "0,0,0,0,1,0,0,0,0,0";
+					pokerHandString += "0,0,0,0,1,0,0,0,0,0";
 					break;
 				case "5":
-					finished += "0,0,0,0,0,1,0,0,0,0";
+					pokerHandString += "0,0,0,0,0,1,0,0,0,0";
 					break;
 				case "6":
-					finished += "0,0,0,0,0,0,1,0,0,0";
+					pokerHandString += "0,0,0,0,0,0,1,0,0,0";
 					break;
 				case "7":
-					finished += "0,0,0,0,0,0,0,1,0,0";
+					pokerHandString += "0,0,0,0,0,0,0,1,0,0";
 					break;
 				case "8":
-					finished += "0,0,0,0,0,0,0,0,1,0";
+					pokerHandString += "0,0,0,0,0,0,0,0,1,0";
 					break;
 				case "9":
-					finished += "0,0,0,0,0,0,0,0,0,1";
+					pokerHandString += "0,0,0,0,0,0,0,0,0,1";
 					break;
 
 				}
@@ -134,7 +140,8 @@ issuit = true;
 				//System.out.println(finished);
 
 				 
-				writer.println(finished);
+				writerCards.println(cardsString);
+				writerHand.println(pokerHandString);
 				
 			}
 		} catch (Exception e) {
@@ -142,7 +149,8 @@ issuit = true;
 			// TODO: handle exception
 		}
 		
-		writer.close();
+		writerCards.close();
+		writerHand.close();
 		 line.close();
 	}
 }
